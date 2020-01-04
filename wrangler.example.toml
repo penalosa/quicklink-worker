@@ -1,0 +1,10 @@
+name = "quicklink-worker"
+type = "webpack"
+account_id = "..."
+route = "https://example.com/*"
+zone_id = "..."
+kv-namespaces = [ 
+    { binding = "redirects", id = "..." },
+    { binding = "stats", id = "..." },
+    { binding = "html", id = "..." }
+]

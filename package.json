@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "name": "quicklink-worker",
+  "version": "1.0.0",
+  "description": "A template for kick starting a Cloudflare Workers project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write '**/*.{js,css,json,md}'",
+    "deploy": "wrangler kv:key put index index.html -p -b html && wrangler kv:key put 404 404.html -p -b html &&  wrangler publish"
+  },
+  "author": "Samuel Macleod <samuel@macleod.space>",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^1.18.2"
+  }
+}

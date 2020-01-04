@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Quicklinks</title>
+    <style>
+      body,
+      html {
+        margin: 0px;
+        background: black;
+        min-height: 100vh;
+      }
+      body {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+      }
+      h1 {
+        color: white;
+        font-family: 'Concourse T2';
+        font-size: 40px;
+        margin: 10px;
+        text-align: center;
+      }
+      input {
+        border: none;
+        padding: 10px;
+        outline: none;
+        font-family: 'Concourse T2';
+        font-size: 21px;
+        color: black;
+        display: inline-block;
+        background: white;
+      }
+      #path {
+        border-bottom-left-radius: 20px;
+        border-top-left-radius: 20px;
+      }
+      #url {
+        border-bottom-right-radius: 20px;
+        border-top-right-radius: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <h1>Where to?</h1>
+      <input type="text" id="path" placeholder="/example" /><input
+        type="text"
+        id="url"
+        placeholder="https://example.com"
+      />
+    </div>
+    <script>
+      const add = async e => {
+        if (e.which == 13) {
+          let path = document.getElementById('path').value
+          let url = document.getElementById('url').value
+          document.getElementById('content').innerHTML = `<h1>Loading...</h1>`
+          await fetch('https://link.penalosa.dev', {
+            method: 'POST',
+            body: JSON.stringify({
+              path,
+              url,
+            }),
+            headers: {
+              'content-type': 'application/json',
+            },
+          })
+          document.getElementById('content').innerHTML = `<h1>Success!</h1>`
+          setTimeout(() => {
+            document.getElementById('content').innerHTML = `<h1>Where to?</h1>
+      <input type="text" id="path" placeholder="/example" /><input
+        type="text"
+        id="url"
+        placeholder="https://example.com"
+      />`
+            document.getElementById('url').addEventListener('keypress', add)
+          }, 1000)
+        }
+      }
+      document.getElementById('url').addEventListener('keypress', add)
+    </script>
+  </body>
+</html>
