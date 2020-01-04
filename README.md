@@ -1,17 +1,7 @@
-# 👷 `worker-template` Hello World
+# Quicklink
 
-A template for kick starting a Cloudflare worker project.
+Super simple short link generator - just fill in `wrangler.example.toml` with your Cloudflare details, rename to `wrangler.toml` and deploy!
 
-[`index.js`](https://github.com/cloudflare/worker-template/blob/master/index.js) is the content of the Workers script.
+You'll need three namespaces (`redirects`, `stats` and `html`), which you can create with `wrangler`.
 
-#### Wrangler
-
-To generate using [wrangler](https://github.com/cloudflare/wrangler)
-
-```
-wrangler generate projectname https://github.com/cloudflare/worker-template
-```
-
-#### Serverless
-
-To deploy using serverless add a [`serverless.yml`](https://serverless.com/framework/docs/providers/cloudflare/) file.
+Deploy with `npm run deploy`
